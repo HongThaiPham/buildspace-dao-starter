@@ -172,6 +172,18 @@ const App = () => {
       });
   }, [address]);
 
+  if (error && error.name === "UnsupportedChainIdError") {
+    return (
+      <div className="unsupported-network">
+        <h2>Please connect to Rinkeby</h2>
+        <p>
+          This dapp only works on the Rinkeby network, please switch networks in
+          your connected wallet.
+        </p>
+      </div>
+    );
+  }
+
   // This is the case where the user hasn't connected their wallet
   // to your web app. Let them call connectWallet.
   if (!address) {
@@ -190,7 +202,7 @@ const App = () => {
   if (hasClaimedNFT) {
     return (
       <div className="member-page">
-        <h1>🍪DAO Member Page</h1>
+        <h1>🍪LEO Token ArtistDAO Member Page</h1>
         <p>Congratulations on being a member</p>
         <div>
           <div>
